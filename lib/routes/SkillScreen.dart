@@ -203,7 +203,7 @@ class SkillScreen extends StatelessWidget {
                       Container(
                         width: 150,
                         child: Text(
-                          "Flutter adalah teknologi open source dari Google yang bisa digunakan untuk membuat aplikasi Android dan iOS",
+                          "Flutter adalah teknologi open source dari Google yang bisa digunakan untuk membuat aplikasi Android dan IOS",
                           textAlign: TextAlign.center,
                         ),
                       ),
