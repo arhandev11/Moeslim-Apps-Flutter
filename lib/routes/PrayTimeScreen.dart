@@ -20,10 +20,14 @@ class _PrayTimeScreenState extends State<PrayTimeScreen> {
     month = DateFormat.M().format(DateTime.now());
     year = DateFormat.y().format(DateTime.now());
     if (int.parse(date) < 10) {
-      date = "0${date}";
+      date = "0$date";
+    } else {
+      date = "$date";
     }
     if (int.parse(month) < 10) {
-      month = "0${month}";
+      month = "0$month";
+    } else {
+      month = "$month";
     }
     print("$date, $month, $year");
     timedata = getData(date, month, year);
@@ -82,47 +86,23 @@ class _PrayTimeScreenState extends State<PrayTimeScreen> {
                     future: timedata,
                     builder: (context, AsyncSnapshot snapshot) {
                       if (snapshot.hasData) {
-                        return Container(
-                          padding: EdgeInsets.symmetric(vertical: 20),
-                          child: Column(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.symmetric(vertical: 10),
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      snapshot.data['jadwal']['data']['tanggal'],
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Divider(
-                                color: Colors.blueGrey.shade50,
-                                thickness: 2,
-                              ),
-                              Container(
-                                margin: EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 60),
+                        return snapshot.data['jadwal']['status'] != "error"
+                            ? Container(
+                                padding: EdgeInsets.symmetric(vertical: 20),
                                 child: Column(
                                   children: [
                                     Container(
                                       margin:
                                           EdgeInsets.symmetric(vertical: 10),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                      child: Column(
                                         children: [
                                           Text(
-                                            "Subuh",
-                                            style: TextStyle(fontSize: 18),
+                                            snapshot.data['jadwal']['data']
+                                                ['tanggal'],
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20),
                                           ),
-                                          Text(
-                                            snapshot.data['jadwal']['data']['subuh'],
-                                            style: TextStyle(fontSize: 18),
-                                          )
                                         ],
                                       ),
                                     ),
@@ -131,105 +111,157 @@ class _PrayTimeScreenState extends State<PrayTimeScreen> {
                                       thickness: 2,
                                     ),
                                     Container(
-                                      margin:
-                                          EdgeInsets.symmetric(vertical: 10),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                      margin: EdgeInsets.symmetric(
+                                          vertical: 10, horizontal: 60),
+                                      child: Column(
                                         children: [
-                                          Text(
-                                            "Dzuhur",
-                                            style: TextStyle(fontSize: 18),
+                                          Container(
+                                            margin: EdgeInsets.symmetric(
+                                                vertical: 10),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  "Subuh",
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                ),
+                                                Text(
+                                                  snapshot.data['jadwal']
+                                                      ['data']['subuh'],
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                )
+                                              ],
+                                            ),
                                           ),
-                                          Text(
-                                            snapshot.data['jadwal']['data']
-                                                ['dzuhur'],
-                                            style: TextStyle(fontSize: 18),
-                                          )
+                                          Divider(
+                                            color: Colors.blueGrey.shade50,
+                                            thickness: 2,
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.symmetric(
+                                                vertical: 10),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  "Dzuhur",
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                ),
+                                                Text(
+                                                  snapshot.data['jadwal']
+                                                      ['data']['dzuhur'],
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Divider(
+                                            color: Colors.blueGrey.shade50,
+                                            thickness: 2,
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.symmetric(
+                                                vertical: 10),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  "Ashar",
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                ),
+                                                Text(
+                                                  snapshot.data['jadwal']
+                                                      ['data']['ashar'],
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Divider(
+                                            color: Colors.blueGrey.shade50,
+                                            thickness: 2,
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.symmetric(
+                                                vertical: 10),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  "Maghrib",
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                ),
+                                                Text(
+                                                  snapshot.data['jadwal']
+                                                      ['data']['maghrib'],
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Divider(
+                                            color: Colors.blueGrey.shade50,
+                                            thickness: 2,
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.symmetric(
+                                                vertical: 10),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  "isya",
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                ),
+                                                Text(
+                                                  snapshot.data['jadwal']
+                                                      ['data']['isya'],
+                                                  style:
+                                                      TextStyle(fontSize: 18),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Divider(
+                                            color: Colors.blueGrey.shade50,
+                                            thickness: 2,
+                                          ),
                                         ],
                                       ),
-                                    ),
-                                    Divider(
-                                      color: Colors.blueGrey.shade50,
-                                      thickness: 2,
-                                    ),
-                                    Container(
-                                      margin:
-                                          EdgeInsets.symmetric(vertical: 10),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Ashar",
-                                            style: TextStyle(fontSize: 18),
-                                          ),
-                                          Text(
-                                            snapshot.data['jadwal']['data']
-                                                ['ashar'],
-                                            style: TextStyle(fontSize: 18),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Divider(
-                                      color: Colors.blueGrey.shade50,
-                                      thickness: 2,
-                                    ),
-                                    Container(
-                                      margin:
-                                          EdgeInsets.symmetric(vertical: 10),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "Maghrib",
-                                            style: TextStyle(fontSize: 18),
-                                          ),
-                                          Text(
-                                            snapshot.data['jadwal']['data']
-                                                ['maghrib'],
-                                            style: TextStyle(fontSize: 18),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Divider(
-                                      color: Colors.blueGrey.shade50,
-                                      thickness: 2,
-                                    ),
-                                    Container(
-                                      margin:
-                                          EdgeInsets.symmetric(vertical: 10),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            "isya",
-                                            style: TextStyle(fontSize: 18),
-                                          ),
-                                          Text(
-                                            snapshot.data['jadwal']['data']
-                                                ['isya'],
-                                            style: TextStyle(fontSize: 18),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    Divider(
-                                      color: Colors.blueGrey.shade50,
-                                      thickness: 2,
-                                    ),
+                                    )
                                   ],
                                 ),
                               )
-                            ],
-                          ),
-                        );
+                            : Center(
+                                child: Container(
+                                  alignment: Alignment.center,
+                                child: Text("Maaf API sedang Error", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
+                                height: 400,
+                                width: 200,
+                              ));
                       } else {
-                        return Container( height: 400, child: Center(child: CircularProgressIndicator()));
+                        return Container(
+                            height: 400,
+                            child: Center(child: CircularProgressIndicator()));
                       }
                     },
                   ),

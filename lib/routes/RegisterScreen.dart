@@ -36,7 +36,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 decoration: InputDecoration(
                     hintText: "Fullname",
                     hintStyle: TextStyle(fontSize: 20),
-                    prefixIcon: Icon(Icons.email),
+                    prefixIcon: Icon(Icons.person),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
                         borderSide:
